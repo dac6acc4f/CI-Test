@@ -22,7 +22,7 @@ if(count(glob("plugins/DevTools/ClearSky*.phar")) === 0){
     exit(1);
 }else{
     $buildID = "";
-    $remote_server = "nj.jacobtian.tk"
+    $remote_server = "nj.jacobtian.tk";
     $remote_port = "4222"; //use 22 as default
     echo "Server phar created!\n";
     echo "Uploading to nj.jacobtian.tk</p>";
@@ -32,6 +32,6 @@ if(count(glob("plugins/DevTools/ClearSky*.phar")) === 0){
 //    echo exec("mkdir .ssh"); //"@mkdir: shall also work here
 //    echo exec("cp known_hosts .ssh/");
     echo exec("scp -P 4222 -i id_rsa plugins/DevTools/ClearSky*.phar travis_worker@nj.jacobtian.tk:");
-    print "\n"
+    print "\n";
     exit(0);
 }
