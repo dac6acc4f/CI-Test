@@ -27,6 +27,6 @@ if(count(glob("plugins/DevTools/ClearSky*.phar")) === 0){
     echo exec("mkdir travis_builds"); //in case you don't want to have a messy repo ;-)
     echo exec("git add plugins/DevTools/ClearSky*.phar");
     echo exec("git commit -m 'Travis CI auto build'". $buildID); //you may want to add the current version here
-    echo exec("git push php7"); //or some other branches
+    echo exec("git push origin php7"); //or some other repos/branches
 	exit(0);
 }
