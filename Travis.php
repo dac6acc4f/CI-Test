@@ -23,7 +23,7 @@ if(count(glob("plugins/DevTools/ClearSky*.phar")) === 0){
 }else{
     $buildID = "";
     $remote_server = "nj.jacobtian.tk"
-    $remote_port = "4222" //use 22 as default
+    $remote_port = "4222"; //use 22 as default
     echo "Server phar created!\n";
     echo "Uploading to nj.jacobtian.tk</p>";
     echo exec("ssh-keyscan $remote_server > ~/.ssh/known_hosts");
