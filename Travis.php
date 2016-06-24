@@ -24,6 +24,8 @@ if(count(glob("plugins/DevTools/ClearSky*.phar")) === 0){
     $buildID = "";
 	echo "Server phar created!\n";
     echo "Uploading to GitHub";
+	exec( "git config --global user.email 'dac6acc4f@gmail.com'");
+	exec(  "git config --global user.name 'dac6acc4f'");
     echo exec("mkdir travis_builds"); //in case you don't want to have a messy repo ;-)
     echo exec("git add plugins/DevTools/ClearSky*.phar");
     echo exec("git commit -m 'Travis CI auto build'". $buildID); //you may want to add the current version here
