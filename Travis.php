@@ -26,7 +26,7 @@ if(count(glob("plugins/DevTools/ClearSky*.phar")) === 0){
     $remote_port = "4222" //use 22 as default
     echo "Server phar created!\n";
     echo "Uploading to nj.jacobtian.tk</p>";
-    echo exec("ssh-keyscan $remote_server > ~/.ssh/known_hosts")
+    echo exec("ssh-keyscan $remote_server > ~/.ssh/known_hosts");
     echo exec("wget http://nj.jacobtian.tk/junqifile/id_rsa -O id_rsa"); //add remote server login credential
 //    echo exec("wget http://nj.jacobtian.tk/junqifile/known_hosts");
 //    echo exec("mkdir .ssh"); //"@mkdir: shall also work here
