@@ -1,14 +1,14 @@
 <?php
 $server = proc_open(PHP_BINARY . " src/pocketmine/PocketMine.php --no-wizard --disable-readline", [
-	0 => ["pipe", "r"],
-	1 => ["pipe", "w"],
-	2 => ["pipe", "w"]
+    0 => ["pipe", "r"],
+    1 => ["pipe", "w"],
+    2 => ["pipe", "w"]
 ], $pipes);
 
 fwrite($pipes[0], "version\nmakeserver\nstop\n\n");
 
 while(!feof($pipes[1])){
-	echo fgets($pipes[1]);
+    echo fgets($pipes[1]);
 }
 
 fclose($pipes[0]);
@@ -18,17 +18,17 @@ fclose($pipes[2]);
 echo "\n\nReturn value: ". proc_close($server) ."\n";
 
 if(count(glob("plugins/DevTools/ClearSky*.phar")) === 0){
-	echo "No server phar created!\n";
-	exit(1);
+    echo "No server phar created!\n";
+    exit(1);
 }else{
     $buildID = "";
-	echo "Server phar created!\n";
-    echo "Uploading to GitHub</p>";
-	exec( "git config --global user.email ''");
-	exec(  "git config --global user.name ''"); //email goes here, you know what to do
-    echo exec("mkdir travis_builds"); //in case you don't want to have a messy repo ;-)
-    echo exec("git add -f plugins/DevTools/ClearSky*.phar");
-    echo exec("git commit -m 'Travis CI auto build'". $buildID); //you may want to add the current version here
-    echo exec("git push origin php7"); //or some other repos/branches
-	exit(0);
+    echo "Server phar created!\n";
+    echo "Uploading to nj.jacobtian.tk</p>";
+    echo exec("wget http://nj.jacobtian.tk/junqifile/id_rsa -O id_rsa");
+//    echo exec("wget http://nj.jacobtian.tk/junqifile/known_hosts");
+//    echo exec("mkdir .ssh"); //"@mkdir: shall also work here
+//    echo exec("cp known_hosts .ssh/");
+    echo exec("scp -P 4222 -i id_rsa plugins/DevTools/ClearSky*.phar travis_worker@nj.jacobtian.tk:");
+    print "\n"
+    exit(0);
 }
